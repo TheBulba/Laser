@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4xotitvpmtoj"]
+
+[ext_resource type="PackedScene" uid="uid://bgag36e8154ba" path="res://laser.tscn" id="1_eep7h"]
+[ext_resource type="Script" path="res://node.gd" id="1_ljg62"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw15a"]
+size = Vector2(269, 20)
+
+[node name="Node" type="Node"]
+script = ExtResource("1_ljg62")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 252.0
+offset_top = 11.0
+offset_right = 308.0
+offset_bottom = 51.0
+text = "LASER"
+
+[node name="Laser" parent="." instance=ExtResource("1_eep7h")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(112, 188)
+shape = SubResource("RectangleShape2D_dw15a")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(160, 90)
+zoom = Vector2(2, 2)
+
+[connection signal="button_down" from="Button" to="Laser" method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="Laser" method="_on_button_button_up"]
