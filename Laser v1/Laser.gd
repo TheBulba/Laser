@@ -7,11 +7,15 @@ func _ready():
 	$Line2D.points[1] = Vector2(0,0)
 	$Line2D.width = 0
 
-#func _unhandled_input(event):
-	#if Input.is_action_just_pressed("LMB"):
-		#_set_casting(true)
-	#else:
-		#_set_casting(false)
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("LMB"):
+		_set_casting(true)
+		$FIRE.emitting = true
+		_appear()
+	else:
+		_set_casting(false)
+		$FIRE.emitting = false
+		_disappear()
 
 func _physics_process(delta):
 	var cast_to := target_position 
@@ -26,21 +30,9 @@ func _set_casting(value):
 	casting = value
 	set_physics_process(value)
 
-
-func _on_button_button_down():
-	_set_casting(true)
-	$FIRE.emitting = true
-	_appear()
-
-func _on_button_button_up():
-	_set_casting(false)
-	$FIRE.emitting = false
-	_disappear()
-
-
 func _appear():
 	var tween = create_tween()
-	tween.tween_property($Line2D, "width", 6, 0.1)
+	tween.tween_property($Line2D, "width", 2, 0.1)
 	
 func _disappear():
 	var tween = create_tween()

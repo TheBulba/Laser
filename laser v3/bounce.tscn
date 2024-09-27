@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://73fapjhyfj82"]
+
+[ext_resource type="Script" path="res://laser v3/Bounce.gd" id="1_sxqs5"]
+
+[node name="Bounce" type="RayCast2D"]
+modulate = Color(1, 0.870588, 0.231373, 1)
+self_modulate = Color(1, 0.871339, 0.22978, 1)
+position = Vector2(0, 10)
+enabled = false
+target_position = Vector2(200, 0)
+hit_from_inside = true
+collide_with_areas = true
+script = ExtResource("1_sxqs5")

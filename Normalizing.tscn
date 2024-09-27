@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb0ndkiojqiri"]
+
+[ext_resource type="Script" path="res://Normalizing.gd" id="1_nlbs5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8dqn"]
+size = Vector2(10, 190)
+
+[node name="Node" type="Area2D" groups=["Mirror"]]
+collision_layer = 3
+collision_mask = 0
+script = ExtResource("1_nlbs5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_l8dqn")
+
+[node name="RayCast2D" type="RayCast2D" parent="CollisionShape2D"]
+position = Vector2(5, 0)
+target_position = Vector2(10, 0)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true

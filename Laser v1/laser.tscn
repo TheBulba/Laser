@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgag36e8154ba"]
+
+[ext_resource type="Script" path="res://Laser v1/Laser.gd" id="1_svlia"]
+[ext_resource type="Texture2D" uid="uid://d4ipc64yi8il4" path="res://bol.png" id="2_tusdl"]
+
+[sub_resource type="Environment" id="Environment_ct4yn"]
+background_mode = 3
+glow_enabled = true
+glow_levels/1 = 1.0
+glow_levels/2 = 1.0
+glow_levels/5 = 0.0
+glow_intensity = 0.4
+glow_strength = 2.0
+glow_blend_mode = 0
+glow_hdr_scale = 1.5
+
+[sub_resource type="Curve" id="Curve_jvstn"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.505618, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_i8b27"]
+offsets = PackedFloat32Array(0.00666667, 1)
+colors = PackedColorArray(0.0925474, 1, 0.224833, 1, 1, 1, 1, 0)
+
+[node name="Laser" type="RayCast2D"]
+position = Vector2(91, 33)
+target_position = Vector2(0, 200)
+script = ExtResource("1_svlia")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 22)
+width = 4.0
+default_color = Color(0, 0.921569, 0.184314, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ct4yn")
+
+[node name="FIRE" type="CPUParticles2D" parent="."]
+emitting = false
+lifetime = 0.3
+texture = ExtResource("2_tusdl")
+emission_shape = 3
+emission_rect_extents = Vector2(2, 1)
+direction = Vector2(0, 1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 60.0
+scale_amount_curve = SubResource("Curve_jvstn")
+color = Color(0, 0.921569, 0.184314, 1)
+color_ramp = SubResource("Gradient_i8b27")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbrlqcx7pry7s"]
+
+[ext_resource type="Script" path="res://Laser_v4.gd" id="1_kh131"]
+[ext_resource type="Script" path="res://laser v3/raycast.gd" id="2_bl251"]
+
+[node name="Laser_v4" type="Node2D"]
+
+[node name="Rotator" type="Node2D" parent="."]
+script = ExtResource("1_kh131")
+
+[node name="Laser" type="RayCast2D" parent="Rotator"]
+target_position = Vector2(200, 0)
+hit_from_inside = true
+collide_with_areas = true
+script = ExtResource("2_bl251")
+
+[node name="Line2D" type="Line2D" parent="Rotator"]
+points = PackedVector2Array(0, 0, 10, 0)
+width = 2.0
+default_color = Color(0, 0.921569, 0.184314, 1)
